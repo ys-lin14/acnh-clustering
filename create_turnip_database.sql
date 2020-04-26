@@ -5,7 +5,7 @@ USE turnip;
 SET NAMES utf8mb4;
 SET character_set_client = utf8mb4;
 	
-CREATE TABLE buy_prices (
+CREATE TABLE buy_data (
 	user_id VARCHAR(16) NOT NULL,
     island_id VARCHAR(32) NOT NULL,
     price SMALLINT UNSIGNED,
@@ -13,7 +13,7 @@ CREATE TABLE buy_prices (
     PRIMARY KEY (user_id, island_id, timestamp_observed)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE sell_prices (
+CREATE TABLE sell_data (
 	user_id VARCHAR(16) NOT NULL,
     island_id VARCHAR(32) NOT NULL,
     price SMALLINT UNSIGNED,
