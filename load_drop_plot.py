@@ -52,15 +52,16 @@ def drop_incomplete_sell_data(data):
             contains turnip selling prices for the entire week
     """
     
-    table = pd.pivot_table(
+    pivot_table = pd.pivot_table(
         data=data, 
         values='price', 
         index=['user_id', 'island_id'], 
         columns=['datetime_observed']
     )
-    table.dropna(inplace=True)
+    pivot_table.dropna(inplace=True)
 
-    data = table.reset_index().melt(
+    data = pivot_table.reset_index()
+    data = data.melt(
         id_vars=['user_id', 'island_id'], 
         value_name='price'
     )
