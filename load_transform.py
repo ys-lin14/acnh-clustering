@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
@@ -192,7 +191,7 @@ def load_transform_combine(num_weeks, connection):
     ]    
     
     weekly_data = [drop_incomplete_sell_data(data) for data in weekly_data]
-    weekly_data = [datetime_to_weekday(data) for data in weekly_data]]
+    weekly_data = [datetime_to_weekday(data) for data in weekly_data]
     
     combined_data = combine(weekly_data)
     return combined_data
