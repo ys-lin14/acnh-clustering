@@ -32,7 +32,7 @@ def get_sample_trends(data, trend_ids, n_samples):
     
     return sample_trends
 
-def plot_trend_samples(data, labels, num_clusters):
+def plot_trend_samples(data, labels, num_clusters, display_sample_ids=False):
     """Plot samples of all trends
     
     Args:
@@ -63,6 +63,8 @@ def plot_trend_samples(data, labels, num_clusters):
     
     for trend_ids, cluster_number in zip(trend_id_clusters, cluster_numbers):
         sample_trends = get_sample_trends(data, trend_ids, 10)
+        
+            
         plt.figure(figsize=(12, 6))
         trend_plot = sns.lineplot(
             x='weekday_observed', 
@@ -80,3 +82,7 @@ def plot_trend_samples(data, labels, num_clusters):
         trend_plot.set_xticklabels(xticks, rotation=30, ha='right')
         plt.xlim(0, 11)
         plt.show()
+
+        if (display_sample_ids):
+            print("Sample IDs for Cluster Number", cluster_number)
+            print(sample_trends['trend_id'].unique())
