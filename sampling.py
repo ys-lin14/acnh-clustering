@@ -63,8 +63,8 @@ def plot_trend_samples(data, labels, num_clusters, display_sample_ids=False):
     
     for trend_ids, cluster_number in zip(trend_id_clusters, cluster_numbers):
         sample_trends = get_sample_trends(data, trend_ids, 10)
+        sample_ids = sample_trends['trend_id'].unique()
         
-            
         plt.figure(figsize=(12, 6))
         trend_plot = sns.lineplot(
             x='weekday_observed', 
@@ -72,6 +72,7 @@ def plot_trend_samples(data, labels, num_clusters, display_sample_ids=False):
             hue='trend_id',
             data=sample_trends, 
             sort=False,
+            palette=sns.color_palette('Set1', n_colors=len(sample_ids)),
             legend=False
         )
         trend_plot.set(
@@ -85,4 +86,4 @@ def plot_trend_samples(data, labels, num_clusters, display_sample_ids=False):
 
         if (display_sample_ids):
             print("Sample IDs for Cluster Number", cluster_number)
-            print(sample_trends['trend_id'].unique())
+            print(sample_ids)
